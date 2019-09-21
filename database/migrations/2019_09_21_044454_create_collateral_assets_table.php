@@ -15,7 +15,13 @@ class CreateCollateralAssetsTable extends Migration
     {
         Schema::create('collateral_assets', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('owner_id');
+            $table->foreign('owner_id')->references('id')->on('borrowers');
+            $table->text('category');
+            $table->text('serial_no');
+            $table->date('year_purchase');
+            $table->unsignedInteger('purchase_price');
+            $table->unsignedInteger('current_value');
         });
     }
 

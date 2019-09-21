@@ -15,7 +15,18 @@ class CreateGuarantorsTable extends Migration
     {
         Schema::create('guarantors', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('borrower_id');
+            $table->foreign('borrower_id')->references('id')->on('borrowers');
+            $table->text('fullname');
+            $table->text('nickname');
+            $table->unsignedInteger('mobile_no');
+            $table->text('residence');
+            $table->string('coordinates',24);
+            $table->text('occupation');
+            $table->text('relationship');
+            $table->unsignedInteger('id_no');
+            $table->longText('id_imageurl');
+            $table->longText('signatureurl');
         });
     }
 

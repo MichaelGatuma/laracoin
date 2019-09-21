@@ -15,7 +15,8 @@ class CreateSampleusersTable extends Migration
     {
         Schema::create('sampleusers', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->text('username');
+            $table->string('password',100);
         });
     }
 

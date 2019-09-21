@@ -15,7 +15,14 @@ class CreateBusinessesTable extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('owner_id');
+            $table->foreign('owner_id')->references('id')->on('borrowers');
+            $table->text('name');
+            $table->longText('type');
+            $table->longText('nature');
+            $table->text('location');
+            $table->text('landmark');
+            $table->string('coordinates',24);
         });
     }
 

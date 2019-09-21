@@ -15,7 +15,11 @@ class CreateReferreesTable extends Migration
     {
         Schema::create('referrees', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('borrower_id');
+            $table->foreign('borrower_id')->references('id')->on('borrowers');
+            $table->text('name');
+            $table->unsignedInteger('mobile_no');
+            $table->text('relationship');
         });
     }
 
