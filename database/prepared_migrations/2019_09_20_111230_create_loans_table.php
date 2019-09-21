@@ -15,8 +15,8 @@ class CreateLoansTable extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('borrowerid');
-            $table->foreign('borrower_id')
+            $table->integer('borrowerid')->unsigned;
+            $table->foreign('borrowerid')
                   ->references('id')->on('borrowers');
             $table->text('term');
             $table->longtext('details');
