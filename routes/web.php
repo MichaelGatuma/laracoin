@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'PagesController@index');
+Route::get('/services', 'PagesController@services');
+/*
+Route::get('/abt', function () {
+    return view('about');
 });
+Route::get('/about', function () {
+    return view('about.about');
+});
+Route::get('/users/{id}/{name}', function ($id,$name) {
+    return 'This is user '.$name.' with an id of '.$id;
+});*/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
