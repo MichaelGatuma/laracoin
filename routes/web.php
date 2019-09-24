@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/services', 'PagesController@services');
+Route::get('/posts', 'PagesController@index');
+Route::get('/', 'PagesController@services');
 /*
 Route::get('/abt', function () {
     return view('about');
@@ -25,7 +25,7 @@ Route::get('/users/{id}/{name}', function ($id,$name) {
 });*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
