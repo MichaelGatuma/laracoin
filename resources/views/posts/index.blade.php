@@ -8,4 +8,5 @@
         <a class="btn btn-success btn-lg" href="#" role="button">Register</a>
         </p>
     </div>
+    <h3>Posts</h3>
 @endsection
