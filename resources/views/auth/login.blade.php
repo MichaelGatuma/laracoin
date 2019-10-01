@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-4 ml-auto mr-auto">
             <form role="form" method="POST" action="{{ route('login') }}">
-                @csrf
+                <!--@csrf-->
             <div class="card card-login card-plain">
                 <div class="card-header ">
                 <div class="logo-container">
