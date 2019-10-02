@@ -14,9 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/1', function () {
-    return view('pages.table');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
