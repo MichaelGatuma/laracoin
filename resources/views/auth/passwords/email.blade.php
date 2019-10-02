@@ -1,46 +1,59 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'namePage' => 'Reset Password',
+    'class' => 'login-page sidebar-mini ',
+    'activePage' => '',
+    'backgroundImage' => asset('assets') . "/img/bg14.jpg",
+])
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-md-center mt-5">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Reset Password</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
+    <div class="content">
+        <div class="container">
+            <div class="col-md-4 ml-auto mr-auto">
+                <form role="form" method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="card card-login card-plain">
+                        <div class="card-header ">
+                            <div class="logo-container">
+                                <img src="{{ asset('assets/img/now-logo.png') }}" alt="">
+                            </div>
                         </div>
-                    @endif
-
-                    <form role="form" method="POST" action="{{ url('/password/email') }}">
-                        {!! csrf_field() !!}
-
-                        <div class="form-group row">
-                            <label class="col-lg-4 col-form-label text-lg-right">E-Mail Address</label>
-
-                            <div class="col-lg-6">
-                                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                        <div class="card-body ">
+                            <div class="card-body">
+                                @if (session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
                                     </div>
                                 @endif
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-lg-6 offset-lg-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
+                            <div class="input-group no-border form-control-lg {{ $errors->has('email') ? ' has-danger' : '' }}">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                    </div>
+                                </span>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             </div>
+                            @error('email')
+                                <span style="display:block;" class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </form>
-                </div>
+                        <div class="card-footer ">
+                            <button  type = "submit" class="btn btn-primary btn-round btn-lg btn-block mb-3">{{ __('Send Password Reset Link') }}</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
+
+
+@push('js')
+<script>
+    $(document).ready(function() {
+      demo.checkFullPageBackgroundImage();
+    });
+  </script>
+@endpush

@@ -20,15 +20,15 @@ Route::get('/abt', function () {
 Route::get('/about', function () {
     return view('about.about');
 });
-Route::get('/users/{id}/{name}', function ($id,$name) {
-    return 'This is user '.$name.' with an id of '.$id;
-});*/
-Auth::routes();
-
-Route::get('/', 'HomeController@index')->name('home');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('posts','PostsController');
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'UserController', ['except' => ['show']]);
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+	Route::get('{page}', ['as' => 'page.index', 'uses' => 'PageController@index']);
+});
+

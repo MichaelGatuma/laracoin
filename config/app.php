@@ -169,7 +169,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        LaravelFrontendPresets\NowUiPreset\NowUiPresetServiceProvider::class,
         /*
          * Application Service Providers...
          */
