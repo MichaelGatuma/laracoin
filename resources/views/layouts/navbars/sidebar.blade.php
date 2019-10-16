@@ -3,11 +3,11 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-      {{ __('CT') }}
+    <a href="#" class="simple-text logo-mini">
+      {{ __('SV') }}
     </a>
-    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="#" class="simple-text logo-normal">
+      {{ __('Superview') }}
     </a>
   </div>
   <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -19,25 +19,31 @@
         </a>
       </li>
       <li>
-        <a data-toggle="collapse" href="#laravelExamples">
+        <a data-toggle="collapse" href="#clientManagement">
             <i class="fab fa-laravel"></i>
           <p>
-            {{ __("Laravel Examples") }}
+            {{ __("Client Management") }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse show" id="laravelExamples">
+        <div class="collapse show" id="clientManagement">
           <ul class="nav">
             <li class="@if ($activePage == 'profile') active @endif">
               <a href="{{ route('profile.edit') }}">
                 <i class="now-ui-icons users_single-02"></i>
-                <p> {{ __("User Profile") }} </p>
+                <p> {{ __("** User Profile **") }} </p>
               </a>
             </li>
-            <li class="@if ($activePage == 'users') active @endif">
-              <a href="{{ route('user.index') }}">
+            <li class="@if ($activePage == 'clients') active @endif">
+              <a href="{{ route('borrowers.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("User Management") }} </p>
+                <p> {{ __("All Clients") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'code') active @endif">
+              <a href="{{ route('borrowers.create') }}">
+                <i class="now-ui-icons ui-1_simple-add"></i>
+                <p> {{ __("New Client") }} </p>
               </a>
             </li>
           </ul>
